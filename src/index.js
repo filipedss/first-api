@@ -3,7 +3,7 @@ const url = require('url');
 const routes = require('./routes');
 
 const server = http.createServer((request, response) => {
-  const parsedUrl = url.parse(request.url);
+  const parsedUrl = url.parse(request.url, true); //true transforma em objeto
   console.log(parsedUrl);
   console.log(`Request method: ${request.method} | Endpoint: ${parsedUrl.pathname}`);
   
