@@ -13,6 +13,12 @@ module.exports = {
   },
   getUserById(request, response) {
     const { id } = request.params;
-    response.send(200, {id});
+    const notFound = {error: "User not found!"};
+    const user = users.find((user) => user.id === Number(id));
+    if(!user){
+      response.send(400, notFound);
+    }else{
+      response.send(200, user);
+    }
   }
 };
